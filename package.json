@@ -1,5 +1,6 @@
 {
     "name": "promises-and-async-await",
+    "type": "module",
     "version": "1.0.0",
     "description": "",
     "main": "index.html",
