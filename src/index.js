@@ -9,26 +9,8 @@ function getUserData1(id) {
     };
 }
 
-const dataBase = await central(2);
-const userInfo2 = await vault(2);
-const userInfo = await db1(2);
-
-//create an empty object to assign promises to keys
-const userData = {};
-const promiseArr = [];
-const keyTracker = [];
-
-// store promise into relevant key
-for (const k in userInfo2) {
-    promiseArr.push(userInfo2[k]);
-    keyTracker.push(k);
-}
-//console.log(userInfo2);
-//console.log(promiseArr);
-//console.log(keyTracker);
-
 //Use Promise.all on all of those promises 
-Promise.all(promiseArr).then(responseArr => {
+/* Promise.all(promiseArr).then(responseArr => {
     const userData = {}; //console.log(responseArr));
     
     for (let i = 0; i < responseArr.length; i++) {
@@ -37,7 +19,7 @@ Promise.all(promiseArr).then(responseArr => {
     }
 
     console.log(userData);
-});
+}); */
   // Now we have a lookup for the keys (keyTracker) that will allow us to 
   // set the movieData correctly.
   /* keyTracker.forEach((key, idx) => {
@@ -51,8 +33,6 @@ async function getData(id) {
     const dataBase = await central(id);
     let userInfo = {};
     const userInfo2 = await vault(id);
-    //userData.id = id;
-    //userData.name = userInfo2.name;
 
     // store promise into relevant key
     for (const k in userInfo2) {
@@ -88,12 +68,17 @@ async function getData(id) {
         for (let i = 0; i < responseArr.length; i++) {
             userData[keyTracker[i]] = responseArr[i];
         }
-        //userData.unshift("id": id);
 
         console.log(userData);
     });
 }
 
-getData(2);
+// testing
+for (let i = 1; i <= 10; i++) {
+    getData(i);
+}
 
+getData(15);
+getData("str");
+getData(true);
 
